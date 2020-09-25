@@ -29,4 +29,7 @@
     <select id="selectByName" resultMap="baseMap">
         select id, name,user_desc from user where name = #{name}
     </select>
+    <select id="selectByNameAndId" resultMap="baseMap">
+        select id, name,user_desc from user where id = #{0} and name = #{1}
+    </select>
 </mapper>

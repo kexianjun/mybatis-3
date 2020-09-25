@@ -24,4 +24,6 @@ public interface UserMapper {
     void insert(User user);
 
     List<User> selectByName(@Param("name") String name);
+
+    User selectByNameAndId(Long id, String name);
 }

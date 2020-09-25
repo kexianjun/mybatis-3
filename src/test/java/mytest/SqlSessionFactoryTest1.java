@@ -32,7 +32,9 @@ public class SqlSessionFactoryTest1 {
     public static void main(String[] args) throws IOException {
         String resource = "resources/mytest/mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder()
+                .build(inputStream);
+
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             User user = new User();
             user.setName("hello");
@@ -41,11 +43,13 @@ public class SqlSessionFactoryTest1 {
             userDesc.setPhone("123456789");
             user.setUserDesc(userDesc);
             UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-            mapper.insert(user);
+           /* mapper.insert(user);
             sqlSession.commit();
             List<User> userList = mapper.selectByName("hello");
             Optional.ofNullable(userList)
-                    .ifPresent(list -> list.forEach(u -> System.out.println("user :" + u)));
+                    .ifPresent(list -> list.forEach(u -> System.out.println("user :" + u)));*/
+            User hello = mapper.selectByNameAndId(1L, "hello");
+            System.out.println(hello);
         } catch (Exception exception) {
             exception.printStackTrace();
         }

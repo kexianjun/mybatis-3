@@ -26,10 +26,17 @@
     </properties>
     <settings>
         <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <setting name="useActualParamName" value="false"/>
     </settings>
+    <typeAliases>
+        <typeAlias type="mytest.model.User" alias="user"/>
+    </typeAliases>
     <typeHandlers>
         <typeHandler handler="mytest.typehandler.UserDescTypeHandler" javaType="mytest.model.UserDesc" jdbcType="VARCHAR"/>
     </typeHandlers>
+    <plugins>
+        <plugin interceptor="mytest.plugin.MyInterceptor" />
+    </plugins>
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
