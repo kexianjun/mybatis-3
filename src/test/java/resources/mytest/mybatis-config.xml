@@ -50,6 +50,7 @@
     </environments>
     <mappers>
         <mapper resource="resources/mytest/mapper/userMapper.xml"/>
+        <mapper resource="resources/mytest/mapper/chCityMapper.xml"/>
     </mappers>
 </configuration>
 

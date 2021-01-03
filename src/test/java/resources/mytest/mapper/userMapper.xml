@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
 
-       Copyright 2009-2020 the original author or authors.
+       Copyright 2009-2021 the original author or authors.
 
        Licensed under the Apache License, Version 2.0 (the "License");
        you may not use this file except in compliance with the License.
@@ -23,10 +23,14 @@
         <result column="name" property="name" jdbcType="VARCHAR"/>
         <result column="user_desc" property="userDesc" jdbcType="VARCHAR" javaType="mytest.model.UserDesc" typeHandler="mytest.typehandler.UserDescTypeHandler"/>
     </resultMap>
+    <cache-ref namespace="mytest.mapper.ChCityMapper"/>
+    <cache/>
+
     <insert id="insert">
         insert into user(`name`, user_desc) values (#{name}, #{userDesc, typeHandler=mytest.typehandler.UserDescTypeHandler})
     </insert>
     <select id="selectByName" resultMap="baseMap">
+
         select id, name,user_desc from user where name = #{name}
     </select>
     <select id="selectByNameAndId" resultMap="baseMap">
